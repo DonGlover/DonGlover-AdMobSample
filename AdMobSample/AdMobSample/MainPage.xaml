@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:local="clr-namespace:AdMobSample.controls"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AdMobSample.MainPage">
+    <StackLayout>
+        <Label Text="Display an Admob Banner!" 
+           HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand" />
+        <!-- Place the Admob controls here -->
+        <local:AdMobView AdUnitId="ca-app-pub-3940256099942544/6300978111" WidthRequest="320" HeightRequest="50"/>
+    </StackLayout>
+</ContentPage>    
