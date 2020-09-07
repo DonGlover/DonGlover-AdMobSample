@@ -51,6 +51,8 @@ I modified the AndroidManifest.xml file located in the Properties folder of the 
 </manifest>
 ```
 
+I set the `com.google.android.gms.ads.APPLICATION_ID` to the same app ID that I used in the initialize call in MainActivity.cs.
+
 To display the ad I had to add a view in the shared project. For more information on implementing a view, see [Implementing a View](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/app-fundamentals/custom-renderer/view).
 
 In the shared project I added AdMobView.cs:
