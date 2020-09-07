@@ -154,5 +154,6 @@ Finally, I modified the MainPage.xaml by adding a reference to the view `xmlns:l
     </StackLayout>
 </ContentPage>
 ```
+This displays a test ad using the Google supplied Test Ad Unit ID `ca-app-pub-3940256099942544/6300978111`. For more information on test ad units, see [Test Ads](https://developers.google.com/admob/android/test-ads).
 
 **Note**: If you do not specify a width and Height request the ad does not display.
