@@ -10,15 +10,15 @@ I created an AdMob account at https://admob.google.com/home/
 
 I created a Blank Android Mobile App called AdMobSample.
 
-![Create Mobile app in Visual Studio](admob-vs-new-project.png)
+![Create Mobile app in Visual Studio](images/admob-vs-new-project.png)
 
 I selected the "Blank" template to create what Microsoft calls an "empty app". In reality, it creates a simple single page app the is useful when you are trying out new techniques. At this time, I am only interested in Android apps so I made sure to uncheck iOS which is typically checked by default.
 
-![Create an empty app](admob-new-app.png)
+![Create an empty app](images/admob-new-app.png)
 
 I added the `Xamarin.GooglePlayServices.Ads` plug-in to the app. **Note**: I initially made the mistake of installing it for all the projects in the app. This caused the plug-in to fail to install with an error message that the plug-in is not compatible with .NET 2.0.
 
-![Create an empty app](admob-google-playservices-ads.png)
+![Create an empty app](images/admob-google-playservices-ads.png)
 
 In the MainActivity.cs file of the Android Project, I added a using statement to reference Ads namespace:
 
