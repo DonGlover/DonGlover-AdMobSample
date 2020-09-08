@@ -1,4 +1,4 @@
-#Adding Google AdMob ads to a Xamarin Forms Android app
+# Adding Google AdMob ads to a Xamarin Forms Android app
 
 Recently, I spent some time banging my head against the wall attempting to figure out how to add AdMob ads to my app. I read through all of the existing recommended blog posts and articles on the subject. I delved into stack overflow. I even perused the official documentation. 
 
