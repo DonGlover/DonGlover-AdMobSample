@@ -7,7 +7,8 @@
         <Label Text="Display an Admob Banner!" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
-        <!-- Place the Admob controls here -->
+        <!-- Place the Admob controls here Currently set to a test Ad Unit ID.
+             For release, set it to your production Ad Unit ID.   -->
         <local:AdMobView AdUnitId="ca-app-pub-3940256099942544/6300978111" WidthRequest="320" HeightRequest="50"/>
     </StackLayout>
 </ContentPage>    
