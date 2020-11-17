@@ -8,6 +8,14 @@ I am sharing what worked for me.
 
 I created an AdMob account at https://admob.google.com/home/
 
+I set up an and App. For more information, see https://support.google.com/admob/answer/9989980?visit_id=637411851150652490-2677892110&rd=1.
+
+I created an Add Unit. For more information, see https://support.google.com/admob/answer/6128738?visit_id=637411851150652490-2677892110&rd=1.
+
+**NOTE**: You get both an **App ID**, created when you set up the app, and an **Ad Unit ID**, created when you create an Add Unit. I failed to Grok the difference, as well as where and when they important.
+The **App ID** is as you might surmise and application level identifier. You set it once for the entire app. In my case, I set in the AdroidManifest, but you can also set set it in code during the start up of your app.
+The **Ad Unit ID** is the identifier for a specific instance of an Ad at specified location if your UI. If I understand the AdMob documentation correctly, you can use multiple **Ad Unit ID**s in the same app.
+
 I created a Blank Android Mobile App called AdMobSample.
 
 ![Create Mobile app in Visual Studio](images/admob-vs-new-project.png)
@@ -16,7 +24,9 @@ I selected the "Blank" template to create what Microsoft calls an "empty app". I
 
 ![Create an empty app](images/admob-new-app.png)
 
-I added the `Xamarin.GooglePlayServices.Ads` plug-in to the app. **Note**: I initially made the mistake of installing it for all the projects in the app. This caused the plug-in to fail to install with an error message that the plug-in is not compatible with .NET 2.0.
+I used NuGet to add the `Xamarin.GooglePlayServices.Ads` plug-in to the app. 
+
+**Note**: I initially made the mistake of installing it for all the projects in the app. This caused the plug-in to fail to install with an error message that the plug-in is not compatible with .NET 2.0.
 
 ![Create an empty app](images/admob-google-playservices-ads.png)
 
@@ -29,14 +39,14 @@ In the `OnCreate` method, I initialized the ads by calling `MobileAds.Initialize
 ```csharp
 base.OnCreate(savedInstanceState);
 
-// Replace the app id with your app ID from Google AdMob
-MobileAds.Initialize(ApplicationContext, "ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy");
+MobileAds.Initialize(ApplicationContext);
 Xamarin.Essentials.Platform.Init(this, savedInstanceState);
 global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 LoadApplication(new App());
 ```
 
-I modified the AndroidManifest.xml file located in the Properties folder of the Android project as follows:
+
+I modified the AndroidManifest.xml file located in the Properties folder of the Android project to specify the **App ID** for the app:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -44,14 +54,13 @@ I modified the AndroidManifest.xml file located in the Properties folder of the 
     <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="28" />
     <application android:label="AdMobSample.Android" android:theme="@style/MainTheme">
       <activity android:name="com.google.android.gms.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:theme="@android:style/Theme.Translucent" />
+	  <!-- Set set this to YOUR APP ID-->
       <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy" />
       <meta-data android:name="com.google.android.gms.ads.AD_MANAGER_APP" android:value="true" />
     </application>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 </manifest>
 ```
-
-I set the `com.google.android.gms.ads.APPLICATION_ID` to the same app ID that I used in the initialize call in MainActivity.cs.
 
 To display the ad I had to add a view in the shared project. For more information on implementing a view, see [Implementing a View](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/app-fundamentals/custom-renderer/view).
 
@@ -156,6 +165,6 @@ Finally, I modified the MainPage.xaml by adding a reference to the view `xmlns:l
     </StackLayout>
 </ContentPage>
 ```
-This displays a test ad using the Google supplied Test Ad Unit ID `ca-app-pub-3940256099942544/6300978111`. For more information on test ad units, see [Test Ads](https://developers.google.com/admob/android/test-ads).
+This displays a test ad using the Google supplied Test **Ad Unit ID** `ca-app-pub-3940256099942544/6300978111`. For more information on test ad units, see [Test Ads](https://developers.google.com/admob/android/test-ads).
 
 **Note**: If you do not specify a width and Height request the ad does not display.
